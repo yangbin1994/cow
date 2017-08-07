@@ -8,10 +8,12 @@
     "babel-polyfill": "^6.23.0",
     "classnames": "^2.2.5",
     "d3-shape": "^1.2.0",
+    "docdash": "^0.4.0",
     "draftjs-to-markdown": "^0.4.0",
     "dva": "^1.2.0",
     "dva-loading": "^0.2.0",
     "ejs-loader": "^0.3.0",
+    "jsdoc": "^3.5.4",
     "jsonp": "^0.2.1",
     "less-vars-to-js": "^1.1.2",
     "lodash": "^4.17.4",
@@ -58,6 +60,7 @@
     "test": "./node_modules/.bin/roadhog test",
     "lint": "eslint --fix --ext .js src",
     "build": "./node_modules/.bin/roadhog build",
-    "build:dll": "./node_modules/.bin/roadhog buildDll"
+    "build:dll": "./node_modules/.bin/roadhog buildDll",
+    "g-docs": "node_modules/.bin/jsdoc --readme ./README.md -c jsdoc.json src/**"
   }
 }
