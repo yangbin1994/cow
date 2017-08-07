@@ -43,7 +43,7 @@ export default {
     }
   },
   dllPlugin: {
-    exclude: ["babel-runtime"],
+    exclude: ["babel-runtime", 'docdash'],
     include: ["dva/router", "dva/saga", "dva/fetch"]
   }
 }
