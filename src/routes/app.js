@@ -6,9 +6,10 @@ import pathToRegexp from 'path-to-regexp'
 import { connect } from 'dva'
 import { Layout, Loader } from 'components'
 import { classnames, config } from 'utils'
-import '../styles/index.less'
+import 'themes/index.less'
 import './app.less'
 import Error from './error'
+import { withRouter } from 'dva/router'
 
 const { prefix, openPages } = config
 
@@ -38,16 +39,16 @@ const App = ({ children, dispatch, app, loading, location }) => {
     isNavbar,
     menuPopoverVisible,
     navOpenKeys,
-    switchMenuPopover () {
+    switchMenuPopover() {
       dispatch({ type: 'app/switchMenuPopver' })
     },
-    logout () {
+    logout() {
       dispatch({ type: 'app/logout' })
     },
-    switchSider () {
+    switchSider() {
       dispatch({ type: 'app/switchSider' })
     },
-    changeOpenKeys (openKeys) {
+    changeOpenKeys(openKeys) {
       dispatch({ type: 'app/handleNavOpenKeys', payload: { navOpenKeys: openKeys } })
     },
   }
@@ -57,10 +58,10 @@ const App = ({ children, dispatch, app, loading, location }) => {
     siderFold,
     darkTheme,
     navOpenKeys,
-    changeTheme () {
+    changeTheme() {
       dispatch({ type: 'app/switchTheme' })
     },
-    changeOpenKeys (openKeys) {
+    changeOpenKeys(openKeys) {
       window.localStorage.setItem(`${prefix}navOpenKeys`, JSON.stringify(openKeys))
       dispatch({ type: 'app/handleNavOpenKeys', payload: { navOpenKeys: openKeys } })
     },
@@ -75,6 +76,7 @@ const App = ({ children, dispatch, app, loading, location }) => {
       {children}
     </div>)
   }
+
   return (
     <div className={classnames(styles.layout, { [styles.fold]: isNavbar ? false : siderFold }, { [styles.withnavbar]: isNavbar })}>
       {!isNavbar ? <aside className={classnames(styles.sider, { [styles.light]: !darkTheme })}>
@@ -85,7 +87,7 @@ const App = ({ children, dispatch, app, loading, location }) => {
         <Bread {...breadProps} />
         <div className={styles.container}>
           <div className={styles.content}>
-            {hasPermission ? children : <Error />}
+            {children}
           </div>
         </div>
         <Footer />
@@ -102,4 +104,4 @@ App.propTypes = {
   loading: PropTypes.object,
 }
 
-export default connect(({ app, loading }) => ({ app, loading }))(App)
+export default withRouter(connect(({ app, loading }) => ({ app, loading }))(App))
