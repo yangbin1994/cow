@@ -7,6 +7,7 @@ import lodash from 'lodash'
 import config from './config'
 import request from './request'
 import { color } from './theme'
+import formSync from './formSync'
 
 // 连字符转驼峰
 String.prototype.hyphenToHump = function () {
@@ -112,4 +113,5 @@ module.exports = {
   queryURL,
   queryArray,
   arrayToTree,
+  formSync,
 }

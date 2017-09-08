@@ -19,7 +19,7 @@ let database = [
     mpid: '1',
     bpid: '1',
     name: 'KOL对比',
-    route: '/media/search',
+    route: '/media/compare',
   },
   {
     id: '2',

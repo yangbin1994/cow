@@ -1,17 +1,16 @@
 const PUBLIC_PATH = process.env.PUBLIC_PATH
-const API_ENV = process.env.API_ENV
-const APIV1 = API_ENV || '/api/v1'
-const APIV2 = API_ENV || '/api/v2'
+const APIV1 = '/api/v1'
+const APIV2 = '/api/v2'
 
 module.exports = {
   prefix: 'antdAdmin',
   name: 'AntD Admin',
   logo: `${PUBLIC_PATH}logo.png`,
-  footerText: 'Ant Design Admin  © 2017 zuiidea',
+  footerText: '版权所有 © 2017 由 Target Social 数据平台组提供技术支持',
   YQL: ['http://www.zuimeitianqi.com'],
   CORS: [],
   openPages: ['/login'],
-  apiPrefix: '/api/v1',
+  apiPrefix: APIV1,
   api: {
     userLogin: `${APIV1}/user/login`,
     userLogout: `${APIV1}/user/logout`,

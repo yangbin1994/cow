@@ -5,7 +5,7 @@ import createHistory from 'history/createBrowserHistory'
 import 'babel-polyfill'
 // 1. Initialize
 
-const app = dva({
+const app = window.app = dva({
   ...createLoading({
     effects: true,
   }),
@@ -16,6 +16,7 @@ const app = dva({
 })
 
 // 2. Model
+// app.model(require('./models/login'))
 app.model(require('./models/app'))
 
 // 3. Router

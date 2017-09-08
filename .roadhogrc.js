@@ -25,6 +25,8 @@ export default {
   // },
   "extraBabelPlugins": [
     "transform-runtime",
+    "transform-decorators-legacy",
+    "lodash",
     [
       "import", {
         "libraryName": "antd",
@@ -43,7 +45,7 @@ export default {
     }
   },
   dllPlugin: {
-    exclude: ["babel-runtime", 'docdash'],
+    exclude: ["babel-runtime", 'docdash', 'babel-plugin-lodash'],
     include: ["dva/router", "dva/saga", "dva/fetch"]
   }
 }

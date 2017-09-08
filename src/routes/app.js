@@ -72,25 +72,28 @@ const App = ({ children, dispatch, app, loading, location }) => {
   }
   if (openPages && openPages.includes(pathname)) {
     return (<div>
-      <Loader spinning={loading.effects['app/query']} />
+      <Loader fullScreen spinning={loading.effects['app/query']} />
       {children}
     </div>)
   }
 
   return (
-    <div className={classnames(styles.layout, { [styles.fold]: isNavbar ? false : siderFold }, { [styles.withnavbar]: isNavbar })}>
-      {!isNavbar ? <aside className={classnames(styles.sider, { [styles.light]: !darkTheme })}>
-        <Sider {...siderProps} />
-      </aside> : ''}
-      <div className={styles.main}>
-        <Header {...headerProps} />
-        <Bread {...breadProps} />
-        <div className={styles.container}>
-          <div className={styles.content}>
-            {children}
+    <div>
+      <Loader fullScreen spinning={loading.effects['app/query']} />
+      <div className={classnames(styles.layout, { [styles.fold]: isNavbar ? false : siderFold }, { [styles.withnavbar]: isNavbar })}>
+        {!isNavbar ? <aside className={classnames(styles.sider, { [styles.light]: !darkTheme })}>
+          <Sider {...siderProps} />
+        </aside> : ''}
+        <div className={styles.main}>
+          <Header {...headerProps} />
+          <Bread {...breadProps} />
+          <div className={styles.container}>
+            <div className={styles.content}>
+              {children}
+            </div>
           </div>
+          <Footer />
         </div>
-        <Footer />
       </div>
     </div>
   )

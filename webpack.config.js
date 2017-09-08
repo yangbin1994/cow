@@ -68,7 +68,6 @@ module.exports = (webpackConfig, env) => {
   webpackConfig.plugins.push(
     new webpack.DefinePlugin({
       'process.env.PUBLIC_PATH': JSON.stringify(process.env.PUBLIC_PATH = webpackConfig.output.publicPath),
-      'process.env.API_ENV': JSON.stringify(process.env.API_ENV = process.env.API_ENV)
     })
   )
 
