@@ -3,7 +3,15 @@ import dva from 'dva'
 import createLoading from 'dva-loading'
 import createHistory from 'history/createBrowserHistory'
 import 'babel-polyfill'
-// 1. Initialize
+import 'echarts-wordcloud'
+import echarts from 'echarts'
+
+import { Tabs, } from 'antd'
+
+const TabPane = Tabs.TabPane
+
+echarts.registerMap('china', require('assets/china'))
+
 
 const app = window.app = dva({
   ...createLoading({

@@ -9,7 +9,6 @@ import {
 import { formSync } from 'utils'
 import _ from 'lodash'
 import classNames from 'classnames'
-import { withRouter } from 'dva/router'
 import styles from './Search.less'
 
 const FormItem = Form.Item
@@ -43,7 +42,7 @@ export default class Search extends React.Component {
   }
 
   state = {
-    expand: true,
+    expand: false,
   }
 
   fetchKols = _.debounce(() => {

@@ -87,11 +87,12 @@ const syncLocationModelMaker = (options) => {
                * 因此prePathname = curPathname这个语句，我不得不放到上面，幸好
                * dispath不依赖它
                */
-              // prePathname = curPathname
-              dispatch({
-                type: 'updateLocationState',
-                payload: _.extend($defaultState, curQuery, preQuery),
-              })
+              setTimeout((function (curQuery, preQuery) {
+                return () => dispatch({
+                  type: 'updateLocationState',
+                  payload: _.extend($defaultState, curQuery, preQuery),
+                })
+              })(curQuery, preQuery))
             }
             preQuery = curQuery
           }

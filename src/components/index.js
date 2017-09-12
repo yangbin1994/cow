@@ -6,10 +6,10 @@ import Editor from './Editor'
 import FilterItem from './FilterItem'
 import Loader from './Loader'
 import * as Layout from './Layout/index.js'
-import { LinkWrapper } from './LinkWrapper'
-
 import layer from './layer'
 
+export { LinkWrapper } from './LinkWrapper'
+export { DataTableLocalState } from './DataTable/DataTableLocalState'
 export {
   Layout,
   DataTable,
@@ -20,5 +20,4 @@ export {
   FilterItem,
   Loader,
   layer,
-  LinkWrapper,
 }

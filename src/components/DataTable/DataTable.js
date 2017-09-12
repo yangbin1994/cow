@@ -5,31 +5,41 @@ import { request } from 'utils'
 import lodash from 'lodash'
 import './DataTable.less'
 
-class DataTable extends React.Component {
-  constructor (props) {
-    super(props)
-    const { dataSource, pagination = {
+
+
+export default class DataTable extends React.Component {
+
+  static propTypes = {
+    fetch: PropTypes.object,
+    rowKey: PropTypes.string,
+    pagination: React.PropTypes.oneOfType([
+      React.PropTypes.bool,
+      React.PropTypes.object,
+    ]),
+    columns: PropTypes.array,
+    dataSource: PropTypes.array,
+  }
+
+  state = {
+    loading: false,
+    dataSource: [],
+    fetchData: {},
+    pagination: {
       showSizeChanger: true,
       showQuickJumper: true,
       showTotal: total => `共 ${total} 条`,
       current: 1,
-      total: 100 },
-    } = props
-    this.state = {
-      loading: false,
-      dataSource,
-      fetchData: {},
-      pagination,
-    }
+      total: 100,
+    },
   }
 
-  componentDidMount () {
+  componentDidMount() {
     if (this.props.fetch) {
       this.fetch()
     }
   }
 
-  componentWillReceiveProps (nextProps) {
+  componentWillReceiveProps(nextProps) {
     const staticNextProps = lodash.cloneDeep(nextProps)
     delete staticNextProps.columns
     const { columns, ...otherProps } = this.props
@@ -81,32 +91,19 @@ class DataTable extends React.Component {
     })
   }
 
-  render () {
-    const { fetch, ...tableProps } = this.props
+  render() {
+    const { fetch, pagination: $pagination, ...tableProps } = this.props
     const { loading, dataSource, pagination } = this.state
-
     return (<Table
       ref="DataTable"
       bordered
       loading={loading}
       onChange={this.handleTableChange}
-      {...tableProps}
-      pagination={pagination}
       dataSource={dataSource}
+      {...tableProps}
+      pagination={{ ...pagination, ...$pagination }}
     />)
   }
 }
 
 
-DataTable.propTypes = {
-  fetch: PropTypes.object,
-  rowKey: PropTypes.string,
-  pagination: React.PropTypes.oneOfType([
-    React.PropTypes.bool,
-    React.PropTypes.object,
-  ]),
-  columns: PropTypes.array,
-  dataSource: PropTypes.array,
-}
-
-export default DataTable

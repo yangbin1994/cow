@@ -11,6 +11,11 @@ import './app.less'
 import Error from './error'
 import { withRouter } from 'dva/router'
 
+// import { Tabs, } from 'antd'
+
+// const TabPane = Tabs.TabPane
+
+
 const { prefix, openPages } = config
 
 const { Header, Bread, Footer, Sider, styles } = Layout

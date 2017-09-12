@@ -80,6 +80,7 @@ module.exports = (webpackConfig, env) => {
     enums: `${__dirname}/src/utils/enums`,
     svg: `${__dirname}/src/svg`,
     themes: `${__dirname}/src/themes`,
+    assets: `${__dirname}/src/assets`,
   }
 
   return webpackConfig

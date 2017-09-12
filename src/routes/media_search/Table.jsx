@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'dva'
-import { Icon, Tooltip, } from 'antd'
-import { DataTable, } from 'components'
+import { Icon, Tooltip, Button, } from 'antd'
+import { DataTableLocalState, LinkWrapper, } from 'components'
 import { config } from 'utils'
 import styles from './index.less'
 
@@ -15,9 +15,7 @@ const Tip = ({ title, tip }) => (
   </span>
 )
 
-@connect(
-  ({ media_search: { locationState, } }) => ({ locationState, })
-)
+@connect()
 export default class Table extends React.Component {
 
   static propTypes = {
@@ -26,14 +24,13 @@ export default class Table extends React.Component {
   }
 
   render = () => {
-    const { dispatch, locationState, } = this.props
+    const { dispatch, } = this.props
 
     const dataTableProps = {
       fetch: {
         url: 'https://randomuser.me/api',
         data: {
           results: 10,
-          ...locationState,
         },
         dataKey: 'results',
       },
@@ -71,7 +68,9 @@ export default class Table extends React.Component {
           width: 200,
           title: '操作',
           dataIndex: '6',
-          render: text => 'test',
+          render: () => (
+            <LinkWrapper to={`/media/${'weibo'}/${123}`}>详情</LinkWrapper>
+          ),
         },
       ],
       rowKey: 'registered',
@@ -79,7 +78,7 @@ export default class Table extends React.Component {
 
     return (
       <div className={this.props.className}>
-        <DataTable
+        <DataTableLocalState
           {...dataTableProps}
         />
       </div>

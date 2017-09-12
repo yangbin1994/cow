@@ -36,15 +36,7 @@ const Routers = function ({ history, app }) {
   //     }, 'login')
   //   },
   // },
-  // {
-  //   path: 'media/weibo/:id',
-  //   getComponent(nextState, cb) {
-  //     require.ensure([], (require) => {
-  //       registerModel(app, require('./models/login'))
-  //       cb(null, require('./routes/Login/'))
-  //     }, 'login')
-  //   },
-  // },
+
   // {
   //   path: 'media/weixin/:id',
   //   getComponent(nextState, cb) {
@@ -162,6 +154,13 @@ const Routers = function ({ history, app }) {
         import('./models/media_search'),
       ],
       component: () => import('./routes/media_search')
+    },
+    {
+      path: '/media/:type/:id',
+      models: () => [
+        import('./models/media_type_id'),
+      ],
+      component: () => import('./routes/media_type_id')
     },
   ]
 
