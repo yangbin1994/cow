@@ -1,5 +1,4 @@
 import React from 'react'
-import PreviewCard from './PreviewCard'
 import PropTypes from 'prop-types'
 import { connect } from 'dva'
 import { Row, Card, Col, Tabs, } from 'antd'

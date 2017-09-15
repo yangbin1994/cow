@@ -1,15 +1,7 @@
 const path = require('path')
-const { version } = require('./package.json')
-
-const svgSpriteDirs = [
-  path.resolve(__dirname, '/src/svg'),
-  require.resolve('antd').replace(/index\.js$/, '')
-]
 
 export default {
   entry: 'src/index.js',
-  svgSpriteLoaderDirs: svgSpriteDirs,
-  theme: "./theme.config.js",
   // 接口代理示例
   // "proxy": {
   //   "/api/v1": {
@@ -40,9 +32,6 @@ export default {
         "dva-hmr",
       ],
     },
-    production: {
-      "publicPath": 'http://106.14.174.157/'
-    }
   },
   dllPlugin: {
     exclude: ["babel-runtime", 'docdash', 'babel-plugin-lodash'],

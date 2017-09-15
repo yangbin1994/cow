@@ -6,12 +6,8 @@ import 'babel-polyfill'
 import 'echarts-wordcloud'
 import echarts from 'echarts'
 
-import { Tabs, } from 'antd'
-
-const TabPane = Tabs.TabPane
-
-echarts.registerMap('china', require('assets/china'))
-
+// import { Tabs, } from 'antd'
+// const TabPane = Tabs.TabPane
 
 const app = window.app = dva({
   ...createLoading({
@@ -24,8 +20,7 @@ const app = window.app = dva({
 })
 
 // 2. Model
-// app.model(require('./models/login'))
-app.model(require('./models/app'))
+// app.model(require('./models/app'))
 
 // 3. Router
 app.router(require('./router'))
